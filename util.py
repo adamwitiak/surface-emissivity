@@ -96,3 +96,24 @@ def load_data(variables):
         
     print('finished loading')
     return x, dT
+
+# Returns a list of lists of the elements, up to the specified length with repeats
+def combinations(lst, length):
+    ret = []
+    
+    for item in lst:
+        ret.append([item])
+    
+    curr_length = 2
+    while curr_length <= length:
+        new_lists = []
+        for item in lst:
+            for old_lst in ret:
+                curr = list(old_lst)
+                curr.append(item)
+                new_lists.append(curr)
+                
+        curr_length += 1
+        ret.extend(new_lists)
+    
+    return ret
